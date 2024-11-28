@@ -22,9 +22,14 @@
         }
         input[type="text"] {
             margin-top: 5px;
-            width: 100%;
             padding: 8px;
             font-size: 14px;
+            width: 80px; /* Adjust width for a numeric input */
+        }
+        .unit {
+            display: inline-block;
+            margin-left: 5px;
+            font-size: 16px;
         }
         button {
             margin-top: 10px;
@@ -34,9 +39,9 @@
         }
     </style>
     <script>
-        function checkAnswer(questionId, nextQuestionId) {
+        function checkAnswer(questionId, nextQuestionId, correctAnswer) {
             const input = document.getElementById(questionId).value.trim();
-            if (input.toLowerCase() === "correct") {
+            if (input === correctAnswer) {
                 alert("Correct!");
                 // Show the next question if it exists
                 const nextQuestion = document.getElementById(nextQuestionId);
@@ -52,56 +57,56 @@
 <body>
     <h1>Answer the Questions</h1>
 
-    <!-- Generate 10 questions with dynamic visibility -->
     <div class="question" id="question1-container">
-        <label for="question1">1. xxx?</label><br>
+        <label for="question1">1. How many hours of sleep does Zhenyu ensure before his exams?</label><br>
         <input type="text" id="question1" name="question1">
-        <button type="button" onclick="checkAnswer('question1', 'question2-container')">Submit</button>
+        <span class="unit">hours</span>
+        <button type="button" onclick="checkAnswer('question1', 'question2-container', '1.5')">Submit</button>
     </div>
     <div class="question" id="question2-container">
         <label for="question2">2. xxx?</label><br>
         <input type="text" id="question2" name="question2">
-        <button type="button" onclick="checkAnswer('question2', 'question3-container')">Submit</button>
+        <button type="button" onclick="checkAnswer('question2', 'question3-container', 'correct')">Submit</button>
     </div>
     <div class="question" id="question3-container">
         <label for="question3">3. xxx?</label><br>
         <input type="text" id="question3" name="question3">
-        <button type="button" onclick="checkAnswer('question3', 'question4-container')">Submit</button>
+        <button type="button" onclick="checkAnswer('question3', 'question4-container', 'correct')">Submit</button>
     </div>
     <div class="question" id="question4-container">
         <label for="question4">4. xxx?</label><br>
         <input type="text" id="question4" name="question4">
-        <button type="button" onclick="checkAnswer('question4', 'question5-container')">Submit</button>
+        <button type="button" onclick="checkAnswer('question4', 'question5-container', 'correct')">Submit</button>
     </div>
     <div class="question" id="question5-container">
         <label for="question5">5. xxx?</label><br>
         <input type="text" id="question5" name="question5">
-        <button type="button" onclick="checkAnswer('question5', 'question6-container')">Submit</button>
+        <button type="button" onclick="checkAnswer('question5', 'question6-container', 'correct')">Submit</button>
     </div>
     <div class="question" id="question6-container">
         <label for="question6">6. xxx?</label><br>
         <input type="text" id="question6" name="question6">
-        <button type="button" onclick="checkAnswer('question6', 'question7-container')">Submit</button>
+        <button type="button" onclick="checkAnswer('question6', 'question7-container', 'correct')">Submit</button>
     </div>
     <div class="question" id="question7-container">
         <label for="question7">7. xxx?</label><br>
         <input type="text" id="question7" name="question7">
-        <button type="button" onclick="checkAnswer('question7', 'question8-container')">Submit</button>
+        <button type="button" onclick="checkAnswer('question7', 'question8-container', 'correct')">Submit</button>
     </div>
     <div class="question" id="question8-container">
         <label for="question8">8. xxx?</label><br>
         <input type="text" id="question8" name="question8">
-        <button type="button" onclick="checkAnswer('question8', 'question9-container')">Submit</button>
+        <button type="button" onclick="checkAnswer('question8', 'question9-container', 'correct')">Submit</button>
     </div>
     <div class="question" id="question9-container">
         <label for="question9">9. xxx?</label><br>
         <input type="text" id="question9" name="question9">
-        <button type="button" onclick="checkAnswer('question9', 'question10-container')">Submit</button>
+        <button type="button" onclick="checkAnswer('question9', 'question10-container', 'correct')">Submit</button>
     </div>
     <div class="question" id="question10-container">
         <label for="question10">10. xxx?</label><br>
         <input type="text" id="question10" name="question10">
-        <button type="button" onclick="checkAnswer('question10', null)">Submit</button>
+        <button type="button" onclick="checkAnswer('question10', null, 'correct')">Submit</button>
     </div>
 </body>
 </html>
