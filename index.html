@@ -87,6 +87,10 @@
 
         // Initialize Enter key listeners
         document.addEventListener("DOMContentLoaded", function () {
+            // Start by displaying the first question correctly
+            const firstQuestion = document.getElementById("question1-container");
+            firstQuestion.style.display = "block"; // Ensure the first question is visible
+
             enableEnterKey('question1', 'question2-container', '1.5');
             enableEnterKey('question2', 'question3-container', '6');
             enableEnterKey('question3', 'question4-container', 'nokia');
