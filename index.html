@@ -71,7 +71,7 @@
             enableEnterKey('question2', 'question3-container', '6');
             enableEnterKey('question3', 'question4-container', 'nokia');
             enableEnterKey('question4', 'question5-container', 'basketball');
-            enableEnterKey('question5', 'question6-container', 'correct');
+            enableEnterKey('question5', 'question6-container', '140');
             enableEnterKey('question6', 'question7-container', 'correct');
             enableEnterKey('question7', 'question8-container', 'correct');
             enableEnterKey('question8', 'question9-container', 'correct');
@@ -110,9 +110,10 @@
     </div>
 
     <div class="question" id="question5-container">
-        <label for="question5">5. xxx?</label><br>
+        <label for="question5">5. What size for Uniqlo kids do I usually get?</label><br>
         <input type="text" id="question5" name="question5">
-        <button type="button" onclick="checkAnswer('question5', 'question6-container', 'correct')">Submit</button>
+        <span class="unit">cm</span>
+        <button type="button" onclick="checkAnswer('question5', 'question6-container', '140')">Submit</button>
     </div>
 
     <div class="question" id="question6-container">
@@ -146,6 +147,7 @@
     </div>
 </body>
 </html>
+
 
 
 
