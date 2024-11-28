@@ -76,8 +76,8 @@
             border-color: #c3e6cb;
         }
         .incorrect {
-            border: 2px solid red; /* Highlight input box in red for incorrect answers */
-            animation: shake 0.3s; /* Optional: Add a shake animation */
+            border: 2px solid red;
+            animation: shake 0.3s;
         }
         @keyframes shake {
             0%, 100% {
@@ -92,26 +92,23 @@
         }
     </style>
     <script>
-        // Check if the answer is correct
         function checkAnswer(questionId, nextQuestionId, correctAnswer) {
             const input = document.getElementById(questionId);
             const questionContainer = document.getElementById(`${questionId}-container`);
             if (input.value.trim().toLowerCase() === correctAnswer.toLowerCase()) {
                 alert("Correct!");
-                input.classList.remove("incorrect"); // Remove incorrect styling
-                questionContainer.classList.add("correct"); // Highlight the current question container
-                // Show the next question if it exists
+                input.classList.remove("incorrect");
+                questionContainer.classList.add("correct");
                 const nextQuestion = document.getElementById(nextQuestionId);
                 if (nextQuestion) {
                     nextQuestion.style.display = "block";
                 }
             } else {
                 alert("Incorrect!");
-                input.classList.add("incorrect"); // Add incorrect styling
+                input.classList.add("incorrect");
             }
         }
 
-        // Listen for the Enter key press on inputs
         function enableEnterKey(questionId, nextQuestionId, correctAnswer) {
             const input = document.getElementById(questionId);
             input.addEventListener("keypress", function (event) {
@@ -122,7 +119,6 @@
             });
         }
 
-        // Initialize Enter key listeners
         document.addEventListener("DOMContentLoaded", function () {
             const firstQuestion = document.getElementById("question1-container");
             firstQuestion.style.display = "block";
@@ -132,7 +128,10 @@
             enableEnterKey('question3', 'question4-container', 'nokia');
             enableEnterKey('question4', 'question5-container', 'basketball');
             enableEnterKey('question5', 'question6-container', '140');
-            enableEnterKey('question6', null, '6');
+            enableEnterKey('question6', 'question7-container', '6');
+            enableEnterKey('question7', 'question8-container', 'gymnastics');
+            enableEnterKey('question8', 'question9-container', '$550.96');
+            enableEnterKey('question9', null, '5');
         });
     </script>
 </head>
@@ -185,11 +184,31 @@
         <div class="question" id="question6-container">
             <label for="question6">6. How many cups does Michelle have at home that are hers?</label><br>
             <input type="text" id="question6" name="question6">
-            <button type="button" onclick="checkAnswer('question6', null, '6')">Submit</button>
+            <button type="button" onclick="checkAnswer('question6', 'question7-container', '6')">Submit</button>
+        </div>
+
+        <div class="question" id="question7-container">
+            <label for="question7">7. What is Esther's first CCA in school?</label><br>
+            <input type="text" id="question7" name="question7">
+            <button type="button" onclick="checkAnswer('question7', 'question8-container', 'gymnastics')">Submit</button>
+        </div>
+
+        <div class="question" id="question8-container">
+            <label for="question8">8. How much has Josiah spent on Lego investments in 2024?</label><br>
+            <input type="text" id="question8" name="question8">
+            <span class="unit">$</span>
+            <button type="button" onclick="checkAnswer('question8', 'question9-container', '$550.96')">Submit</button>
+        </div>
+
+        <div class="question" id="question9-container">
+            <label for="question9">9. How many T-shirts has Yucai worn as of 28 November 2024 in the calendar year?</label><br>
+            <input type="text" id="question9" name="question9">
+            <button type="button" onclick="checkAnswer('question9', null, '5')">Submit</button>
         </div>
     </div>
 </body>
 </html>
+
 
 
 
