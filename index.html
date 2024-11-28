@@ -24,7 +24,7 @@
             margin-top: 5px;
             padding: 8px;
             font-size: 14px;
-            width: 80px; /* Adjust width for a numeric input */
+            width: 200px; /* Adjust width for longer input */
         }
         .unit {
             display: inline-block;
@@ -41,7 +41,7 @@
     <script>
         function checkAnswer(questionId, nextQuestionId, correctAnswer) {
             const input = document.getElementById(questionId).value.trim();
-            if (input === correctAnswer) {
+            if (input.toLowerCase() === correctAnswer.toLowerCase()) {
                 alert("Correct!");
                 // Show the next question if it exists
                 const nextQuestion = document.getElementById(nextQuestionId);
@@ -71,9 +71,10 @@
     </div>
 
     <div class="question" id="question3-container">
-        <label for="question3">3. xxx?</label><br>
+        <label for="question3">3. Where did Clive play my first Pokémon game (hint: not Gameboy)?</label><br>
+        <span>on his shitty</span>
         <input type="text" id="question3" name="question3">
-        <button type="button" onclick="checkAnswer('question3', 'question4-container', 'correct')">Submit</button>
+        <button type="button" onclick="checkAnswer('question3', 'question4-container', 'nokia')">Submit</button>
     </div>
 
     <div class="question" id="question4-container">
@@ -119,4 +120,5 @@
     </div>
 </body>
 </html>
+
 
