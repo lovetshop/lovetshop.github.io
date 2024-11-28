@@ -8,33 +8,33 @@
         body {
             font-family: Arial, sans-serif;
             margin: 0;
-            display: flex;
-            justify-content: center; /* Centers content horizontally */
-            align-items: flex-start; /* Keeps the content aligned to the top */
             height: 100vh; /* Full viewport height */
+            display: flex;
+            justify-content: center; /* Centers the form horizontally */
+            align-items: flex-start; /* Keeps the content aligned to the top */
             text-align: center; /* Centers text inside all elements */
         }
         .container {
-            width: 80%; /* Adjust the width of the form container */
-            max-width: 600px; /* Max width for better readability */
+            width: 100%; /* Makes the container take the full width of the screen */
+            padding: 20px;
         }
         .header {
             display: flex;
-            justify-content: space-between; /* Spreads the content horizontally */
+            justify-content: space-between; /* Spread content horizontally */
             align-items: center;
-            margin-bottom: 20px;
-            width: 100%; /* Ensures the header takes the full width */
+            width: 100%; /* Ensures the header spans the full width */
+            padding: 20px 0;
         }
         .header img {
             width: 80px; /* Adjust the size of the parcel icon */
             height: 80px;
-            margin-right: 20px; /* Space between icon and text */
         }
         .header h1 {
             font-size: 48px; /* Increased font size for the text */
             font-weight: bold;
             flex-grow: 1; /* Allows the text to take up the remaining space */
             text-align: left; /* Aligns text to the left side */
+            margin: 0; /* Removes default margin */
         }
         .question {
             margin-bottom: 20px;
@@ -114,7 +114,8 @@
             enableEnterKey('question2', 'question3-container', '6');
             enableEnterKey('question3', 'question4-container', 'nokia');
             enableEnterKey('question4', 'question5-container', 'basketball');
-            enableEnterKey('question5', null, '140');
+            enableEnterKey('question5', 'question6-container', '140');
+            enableEnterKey('question6', null, '6');
         });
     </script>
 </head>
@@ -158,14 +159,21 @@
         </div>
 
         <div class="question" id="question5-container">
-            <label for="question5">5. What size for Uniqlo kids does Ginette usually get?</label><br>
+            <label for="question5">5. What size for Uniqlo kids do I usually get?</label><br>
             <input type="text" id="question5" name="question5">
             <span class="unit">cm</span>
-            <button type="button" onclick="checkAnswer('question5', null, '140')">Submit</button>
+            <button type="button" onclick="checkAnswer('question5', 'question6-container', '140')">Submit</button>
+        </div>
+
+        <div class="question" id="question6-container">
+            <label for="question6">6. How many cups does Michelle have at home that are hers?</label><br>
+            <input type="text" id="question6" name="question6">
+            <button type="button" onclick="checkAnswer('question6', null, '6')">Submit</button>
         </div>
     </div>
 </body>
 </html>
+
 
 
 
