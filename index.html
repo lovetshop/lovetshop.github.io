@@ -8,15 +8,15 @@
         body {
             font-family: Arial, sans-serif;
             margin: 0;
-            height: 100vh; /* Full viewport height */
-            display: flex;
-            justify-content: center; /* Centers the form horizontally */
-            align-items: flex-start; /* Keeps the content aligned to the top */
-            text-align: center; /* Centers text inside all elements */
+            height: 100vh;
+            text-align: center;
         }
         .container {
-            width: 100%; /* Makes the container take the full width of the screen */
+            width: 100%; /* Full width */
+            max-width: 1200px; /* Optional: Limits the width for very large screens */
+            margin: 0 auto; /* Center the container horizontally */
             padding: 20px;
+            text-align: left; /* Align text to the left */
         }
         .header {
             display: flex;
@@ -26,25 +26,29 @@
             padding: 20px 0;
         }
         .header img {
-            width: 80px; /* Adjust the size of the parcel icon */
+            width: 80px; /* Larger parcel image */
             height: 80px;
         }
         .header h1 {
-            font-size: 48px; /* Increased font size for the text */
+            font-size: 40px; /* Larger font for the title */
+            flex-grow: 1; /* Make title span the available space */
+            text-align: center; /* Ensure the title is centered */
+        }
+        .instruction {
+            margin-top: 20px;
+            font-size: 18px;
             font-weight: bold;
-            flex-grow: 1; /* Allows the text to take up the remaining space */
-            text-align: left; /* Aligns text to the left side */
-            margin: 0; /* Removes default margin */
+            text-align: center; /* Center this text */
         }
         .question {
             margin-bottom: 20px;
-            display: none;
+            display: none; /* Hide all questions initially */
             padding: 10px;
             border: 1px solid #ccc;
             border-radius: 5px;
         }
         .question:first-of-type {
-            display: block;
+            display: block; /* Show the first question */
         }
         label {
             font-size: 16px;
@@ -54,7 +58,7 @@
             margin-top: 5px;
             padding: 8px;
             font-size: 14px;
-            width: 200px;
+            width: 200px; /* Adjust width for longer input */
         }
         .unit {
             display: inline-block;
@@ -68,13 +72,8 @@
             cursor: pointer;
         }
         .correct {
-            background-color: #d4edda;
+            background-color: #d4edda; /* Light green for correct answers */
             border-color: #c3e6cb;
-        }
-        .instruction {
-            margin-top: 20px;
-            font-size: 18px;
-            font-weight: bold;
         }
     </style>
     <script>
@@ -84,7 +83,9 @@
             const questionContainer = document.getElementById(`${questionId}-container`);
             if (input.toLowerCase() === correctAnswer.toLowerCase()) {
                 alert("Correct!");
+                // Highlight the current question container in green
                 questionContainer.classList.add("correct");
+                // Show the next question if it exists
                 const nextQuestion = document.getElementById(nextQuestionId);
                 if (nextQuestion) {
                     nextQuestion.style.display = "block";
@@ -173,6 +174,7 @@
     </div>
 </body>
 </html>
+
 
 
 
