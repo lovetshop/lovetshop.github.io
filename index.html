@@ -3,11 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Questions</title>
+    <title>EXPRESS PARCEL SG</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 20px;
+        }
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+        }
+        .header img {
+            width: 50px; /* Adjust the size of the parcel image */
+            height: 50px; /* Adjust the size of the parcel image */
+            margin-right: 10px; /* Space between image and title */
         }
         .question {
             margin-bottom: 20px;
@@ -86,7 +96,12 @@
     </script>
 </head>
 <body>
-    <h1>Answer the Questions</h1>
+    <div class="header">
+        <img src="https://via.placeholder.com/50x50.png?text=Parcel" alt="Parcel Icon">
+        <h1>EXPRESS PARCEL SG</h1>
+    </div>
+
+    <h2>Answer the Questions</h2>
 
     <div class="question" id="question1-container">
         <label for="question1">1. How many hours of sleep does Zhenyu ensure before his exams?</label><br>
@@ -122,6 +137,7 @@
     </div>
 </body>
 </html>
+
 
 
 
