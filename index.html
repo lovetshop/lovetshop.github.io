@@ -8,13 +8,15 @@
         body {
             font-family: Arial, sans-serif;
             margin: 0;
-            padding: 0;
-            height: 100vh; /* Full viewport height */
             display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center; /* Center everything horizontally and vertically */
-            text-align: center;
+            justify-content: center; /* Centers content horizontally */
+            align-items: flex-start; /* Keeps the content aligned to the top */
+            height: 100vh; /* Full viewport height */
+            text-align: center; /* Centers text inside all elements */
+        }
+        .container {
+            width: 80%; /* Adjust the width of the form container */
+            max-width: 600px; /* Max width for better readability */
         }
         .header {
             display: flex;
@@ -23,29 +25,19 @@
             margin-bottom: 20px;
         }
         .header img {
-            width: 50px; /* Adjust the size of the parcel image */
-            height: 50px; /* Adjust the size of the parcel image */
-            margin-right: 10px; /* Space between image and title */
-        }
-        h1 {
-            font-size: 30px;
-            font-weight: bold;
-        }
-        .instruction {
-            margin-top: 20px;
-            font-size: 18px;
-            font-weight: bold;
+            width: 50px;
+            height: 50px;
+            margin-right: 10px;
         }
         .question {
             margin-bottom: 20px;
-            display: none; /* Hide all questions initially */
+            display: none;
             padding: 10px;
             border: 1px solid #ccc;
             border-radius: 5px;
-            width: 300px; /* Set a fixed width for questions */
         }
         .question:first-of-type {
-            display: block; /* Show the first question */
+            display: block;
         }
         label {
             font-size: 16px;
@@ -55,7 +47,7 @@
             margin-top: 5px;
             padding: 8px;
             font-size: 14px;
-            width: 100%; /* Full width of the input */
+            width: 200px;
         }
         .unit {
             display: inline-block;
@@ -69,12 +61,13 @@
             cursor: pointer;
         }
         .correct {
-            background-color: #d4edda; /* Light green for correct answers */
+            background-color: #d4edda;
             border-color: #c3e6cb;
         }
-        h2 {
-            font-size: 24px;
+        .instruction {
             margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
         }
     </style>
     <script>
@@ -84,9 +77,7 @@
             const questionContainer = document.getElementById(`${questionId}-container`);
             if (input.toLowerCase() === correctAnswer.toLowerCase()) {
                 alert("Correct!");
-                // Highlight the current question container in green
                 questionContainer.classList.add("correct");
-                // Show the next question if it exists
                 const nextQuestion = document.getElementById(nextQuestionId);
                 if (nextQuestion) {
                     nextQuestion.style.display = "block";
@@ -109,7 +100,6 @@
 
         // Initialize Enter key listeners
         document.addEventListener("DOMContentLoaded", function () {
-            // Start by displaying the first question correctly
             const firstQuestion = document.getElementById("question1-container");
             firstQuestion.style.display = "block"; // Ensure the first question is visible
 
@@ -122,51 +112,54 @@
     </script>
 </head>
 <body>
-    <div class="header">
-        <img src="parcel.jpg" alt="Parcel Icon">
-        <h1>EXPRESS PARCEL SG</h1>
-    </div>
-    
-    <div class="instruction">
-        Please answer all the questions as the first step to recovering your parcel.
-    </div>
+    <div class="container">
+        <div class="header">
+            <img src="parcel.jpg" alt="Parcel Icon">
+            <h1>EXPRESS PARCEL SG</h1>
+        </div>
 
-    <h2>Answer the Questions</h2>
+        <div class="instruction">
+            Please answer all the questions as the first step to recovering your parcel.
+        </div>
 
-    <div class="question" id="question1-container">
-        <label for="question1">1. How many hours of sleep does Zhenyu ensure before his exams?</label><br>
-        <input type="text" id="question1" name="question1">
-        <span class="unit">hours</span>
-        <button type="button" onclick="checkAnswer('question1', 'question2-container', '1.5')">Submit</button>
-    </div>
+        <h2>Answer the Questions</h2>
 
-    <div class="question" id="question2-container">
-        <label for="question2">2. How many Uniqlo pieces has Han Ming bought in the last month?</label><br>
-        <input type="text" id="question2" name="question2">
-        <button type="button" onclick="checkAnswer('question2', 'question3-container', '6')">Submit</button>
-    </div>
+        <div class="question" id="question1-container">
+            <label for="question1">1. How many hours of sleep does Zhenyu ensure before his exams?</label><br>
+            <input type="text" id="question1" name="question1">
+            <span class="unit">hours</span>
+            <button type="button" onclick="checkAnswer('question1', 'question2-container', '1.5')">Submit</button>
+        </div>
 
-    <div class="question" id="question3-container">
-        <label for="question3">3. Where did Clive play my first Pokémon game (hint: not Gameboy)?</label><br>
-        <span>on his shitty</span>
-        <input type="text" id="question3" name="question3">
-        <button type="button" onclick="checkAnswer('question3', 'question4-container', 'nokia')">Submit</button>
-    </div>
+        <div class="question" id="question2-container">
+            <label for="question2">2. How many Uniqlo pieces has Han Ming bought in the last month?</label><br>
+            <input type="text" id="question2" name="question2">
+            <button type="button" onclick="checkAnswer('question2', 'question3-container', '6')">Submit</button>
+        </div>
 
-    <div class="question" id="question4-container">
-        <label for="question4">4. What sport did Valerie play every recess in P3/P4?</label><br>
-        <input type="text" id="question4" name="question4">
-        <button type="button" onclick="checkAnswer('question4', 'question5-container', 'basketball')">Submit</button>
-    </div>
+        <div class="question" id="question3-container">
+            <label for="question3">3. Where did Clive play my first Pokémon game (hint: not Gameboy)?</label><br>
+            <span>on his shitty</span>
+            <input type="text" id="question3" name="question3">
+            <button type="button" onclick="checkAnswer('question3', 'question4-container', 'nokia')">Submit</button>
+        </div>
 
-    <div class="question" id="question5-container">
-        <label for="question5">5. What size for Uniqlo kids do I usually get?</label><br>
-        <input type="text" id="question5" name="question5">
-        <span class="unit">cm</span>
-        <button type="button" onclick="checkAnswer('question5', null, '140')">Submit</button>
+        <div class="question" id="question4-container">
+            <label for="question4">4. What sport did Valerie play every recess in P3/P4?</label><br>
+            <input type="text" id="question4" name="question4">
+            <button type="button" onclick="checkAnswer('question4', 'question5-container', 'basketball')">Submit</button>
+        </div>
+
+        <div class="question" id="question5-container">
+            <label for="question5">5. What size for Uniqlo kids do I usually get?</label><br>
+            <input type="text" id="question5" name="question5">
+            <span class="unit">cm</span>
+            <button type="button" onclick="checkAnswer('question5', null, '140')">Submit</button>
+        </div>
     </div>
 </body>
 </html>
+
 
 
 
