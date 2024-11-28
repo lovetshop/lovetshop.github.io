@@ -20,18 +20,21 @@
         }
         .header {
             display: flex;
+            justify-content: space-between; /* Spreads the content horizontally */
             align-items: center;
-            justify-content: center;
             margin-bottom: 20px;
+            width: 100%; /* Ensures the header takes the full width */
         }
         .header img {
-            width: 100px; /* Increased size for the parcel icon */
-            height: 100px;
-            margin-right: 20px; /* Increased space between icon and text */
+            width: 80px; /* Adjust the size of the parcel icon */
+            height: 80px;
+            margin-right: 20px; /* Space between icon and text */
         }
         .header h1 {
             font-size: 48px; /* Increased font size for the text */
             font-weight: bold;
+            flex-grow: 1; /* Allows the text to take up the remaining space */
+            text-align: left; /* Aligns text to the left side */
         }
         .question {
             margin-bottom: 20px;
@@ -163,6 +166,7 @@
     </div>
 </body>
 </html>
+
 
 
 
