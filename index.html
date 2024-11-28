@@ -39,6 +39,7 @@
         }
     </style>
     <script>
+        // Check if the answer is correct
         function checkAnswer(questionId, nextQuestionId, correctAnswer) {
             const input = document.getElementById(questionId).value.trim();
             if (input.toLowerCase() === correctAnswer.toLowerCase()) {
@@ -52,6 +53,31 @@
                 alert("Incorrect!");
             }
         }
+
+        // Listen for the Enter key press on inputs
+        function enableEnterKey(questionId, nextQuestionId, correctAnswer) {
+            const input = document.getElementById(questionId);
+            input.addEventListener("keypress", function (event) {
+                if (event.key === "Enter") {
+                    event.preventDefault();
+                    checkAnswer(questionId, nextQuestionId, correctAnswer);
+                }
+            });
+        }
+
+        // Initialize Enter key listeners
+        document.addEventListener("DOMContentLoaded", function () {
+            enableEnterKey('question1', 'question2-container', '1.5');
+            enableEnterKey('question2', 'question3-container', '6');
+            enableEnterKey('question3', 'question4-container', 'nokia');
+            enableEnterKey('question4', 'question5-container', 'basketball');
+            enableEnterKey('question5', 'question6-container', 'correct');
+            enableEnterKey('question6', 'question7-container', 'correct');
+            enableEnterKey('question7', 'question8-container', 'correct');
+            enableEnterKey('question8', 'question9-container', 'correct');
+            enableEnterKey('question9', 'question10-container', 'correct');
+            enableEnterKey('question10', null, 'correct');
+        });
     </script>
 </head>
 <body>
@@ -120,5 +146,6 @@
     </div>
 </body>
 </html>
+
 
 
