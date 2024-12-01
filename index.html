@@ -71,6 +71,20 @@
             font-size: 14px;
             cursor: pointer;
         }
+        #next-step-button {
+            display: none;
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        #next-step-button:hover {
+            background-color: #0056b3;
+        }
         .correct {
             background-color: #d4edda;
             border-color: #c3e6cb;
@@ -95,20 +109,18 @@
         function checkAnswer(questionId, nextQuestionId, correctAnswer) {
             const input = document.getElementById(questionId);
             const questionContainer = document.getElementById(`${questionId}-container`);
-            const userAnswer = input.value.trim().toLowerCase();
-            
-            // For question 8, strip out the '$' if present in the input
-            const sanitizedAnswer = questionId === 'question8' ? userAnswer.replace('$', '') : userAnswer;
-
-            if (sanitizedAnswer === correctAnswer.toLowerCase()) {
+            if (input.value.trim().toLowerCase() === correctAnswer.toLowerCase()) {
                 alert("Correct!");
                 input.classList.remove("incorrect");
                 questionContainer.classList.add("correct");
                 if (nextQuestionId) {
                     const nextQuestion = document.getElementById(nextQuestionId);
                     if (nextQuestion) {
-                        nextQuestion.style.display = "block"; // Show the next question
+                        nextQuestion.style.display = "block";
                     }
+                } else {
+                    // Show the "Next Step" button after the last question
+                    document.getElementById("next-step-button").style.display = "block";
                 }
             } else {
                 alert("Incorrect!");
@@ -127,6 +139,9 @@
         }
 
         document.addEventListener("DOMContentLoaded", function () {
+            const firstQuestion = document.getElementById("question1-container");
+            firstQuestion.style.display = "block";
+
             enableEnterKey('question1', 'question2-container', '1.5');
             enableEnterKey('question2', 'question3-container', '6');
             enableEnterKey('question3', 'question4-container', 'nokia');
@@ -137,6 +152,10 @@
             enableEnterKey('question8', 'question9-container', '550.96');
             enableEnterKey('question9', null, '5');
         });
+
+        function goToNextStep() {
+            window.location.href = "next-step.html";
+        }
     </script>
 </head>
 <body>
@@ -159,6 +178,7 @@
             <button type="button" onclick="checkAnswer('question1', 'question2-container', '1.5')">Submit</button>
         </div>
 
+        <!-- Additional question containers remain unchanged -->
         <div class="question" id="question2-container">
             <label for="question2">2. How many Uniqlo pieces has Han Ming bought in the last month?</label><br>
             <input type="text" id="question2" name="question2">
@@ -198,8 +218,8 @@
         </div>
 
         <div class="question" id="question8-container">
-            <label for="question8">8. How much has Josiah spent on Lego investments in 2024?</label><br>
-            <span>$</span>
+            <label for="question8">8. How much has Josiah spent on Lego investments in 2024? aka how much money he wasted</label><br>
+            <span class="unit">$</span>
             <input type="text" id="question8" name="question8">
             <button type="button" onclick="checkAnswer('question8', 'question9-container', '550.96')">Submit</button>
         </div>
@@ -209,6 +229,8 @@
             <input type="text" id="question9" name="question9">
             <button type="button" onclick="checkAnswer('question9', null, '5')">Submit</button>
         </div>
+
+        <button id="next-step-button" onclick="goToNextStep()">Next Step</button>
     </div>
 </body>
 </html>
