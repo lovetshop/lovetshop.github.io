@@ -109,24 +109,27 @@
         function checkAnswer(questionId, nextQuestionId, correctAnswer) {
             const input = document.getElementById(questionId);
             const questionContainer = document.getElementById(`${questionId}-container`);
-            if (input.value.trim().toLowerCase() === correctAnswer.toLowerCase()) {
+            const userAnswer = input.value.trim().toLowerCase();
+            
+            // For question 8, strip out the '$' if present in the input
+            const sanitizedAnswer = questionId === 'question8' ? userAnswer.replace('$', '') : userAnswer;
+        
+            if (sanitizedAnswer === correctAnswer.toLowerCase()) {
                 alert("Correct!");
                 input.classList.remove("incorrect");
                 questionContainer.classList.add("correct");
                 if (nextQuestionId) {
                     const nextQuestion = document.getElementById(nextQuestionId);
                     if (nextQuestion) {
-                        nextQuestion.style.display = "block";
+                        nextQuestion.style.display = "block"; // Show the next question
                     }
-                } else {
-                    // Show the "Next Step" button after the last question
-                    document.getElementById("next-step-button").style.display = "block";
                 }
             } else {
                 alert("Incorrect!");
                 input.classList.add("incorrect");
             }
         }
+
 
         function enableEnterKey(questionId, nextQuestionId, correctAnswer) {
             const input = document.getElementById(questionId);
